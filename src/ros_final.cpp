@@ -22,7 +22,32 @@
  * 3. get voronoi path planner => try to use voronoi in cones
  * 4. thread ?
  * 
- * 
- * 
- * 
  */
+
+#include "navigator.h"
+#include <ros/ros.h>
+#include <geometry_msgs/PoseStamped.h>
+#include <nav_msgs/OccupancyGrid.h>
+
+int main(int argc, char** argv)
+{
+
+
+    /* get argument */
+
+    /* get map if use map or get cone info */
+
+    ros::NodeHandle nh;
+
+    /* sub to map(maybe), pub to path */
+
+    while(ros::ok())
+    {
+        switch(mode)
+        {
+            
+        }
+    }
+
+
+}

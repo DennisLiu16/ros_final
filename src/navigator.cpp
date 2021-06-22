@@ -210,21 +210,34 @@ void Navigator::ToQuaternion(geometry_msgs::PoseStamped* p,double yaw, double pi
 
 void Navigator::make_sure_fpair_length()
 {
-    if(_info.fpair->lhs.size() == _info.fpair->rhs.size())
+    int l_length = _info.fpair->lhs.size();
+    int r_length = _info.fpair->rhs.size();
+    if (l_length == r_length)
         return;
 
     else
     {
         /* diff size happen */
-        vpd_t::iterator lit = _info.fpair->lhs.begin();
-        vpd_t::iterator rit = _info.fpair->rhs.begin();
+        vpd_t longer = (_info.fpair->lhs.size()>_info.fpair->rhs.size()) ? _info.fpair->lhs : _info.fpair->rhs;
+        vpd_t shorter = (longer == _info.fpair->lhs) ? _info.fpair->rhs : _info.fpair->lhs;
 
         /* Dicision: pick the closest to the needed compensation point */
+        vpd_t::iterator main = longer.begin();   // longer
+        vpd_t::iterator sub = shorter.begin();    // shorter
+
+        throw std::invalid_argument("length dismatch");
+
+        for(main;main!=longer.end();main++)
+        {
+            /* TODO*/
+        }
+        
+        return;
+
     }
     
 
-    /* init iterator of cone location pairs */
-        throw std::invalid_argument("g2t - length dismatch, two sides of cones supposed to be same");
+    
 
 }
 
